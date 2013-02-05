@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Customize the search results
+ *
+ * Filter search results by user language
+ */
+
+/**
+ * Implementation of hook_query_alter().
+ */
+function search_language_query_alter(QueryAlterableInterface $query) {
+  $tables = $query->getTables();
+  global $language;
+
+  // force the search results to be in the user's language
+  if (array_key_exists('i', $tables) && $query instanceof PagerDefault) {
+    $query->condition('n.language', $language->language);
+  }
+}

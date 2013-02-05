@@ -1,0 +1,9 @@
+; $Id$
+name = Search Language
+description = Restrict search results to user-chosen language
+core = 7.x
+package = MJD
+dependencies[] = search
+
+;Base Module Files
+files[] = search_language.module
